@@ -1,6 +1,6 @@
 # ARAGOG-MIT-LLX
 
-Exploring different Retrieval-Augmented Generation (RAG) techniques and analyzing their outputs.
+Exploring different Retrieval-Augmented Generation (RAG) methods and analyzing their outputs.
 
 ## References
 - [[arXiv](https://arxiv.org/pdf/2404.01037v1)]: ARAGOG: Advanced RAG Output Grading
