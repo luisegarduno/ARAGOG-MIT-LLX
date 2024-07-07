@@ -13,8 +13,12 @@ python = "^3.11"
 uvicorn = "^0.23.2"
 langserve = {extras = ["server"], version = ">=0.0.30"}
 pydantic = "<2"
-rag-chroma-private = {path = "packages/rag-chroma-private", develop = true}
-
+langchain = "^0.1"
+tiktoken = ">=0.5.1"
+chromadb = ">=0.4.14"
+gpt4all = ">=1.0.8"
+beautifulsoup4 = ">=4.12.2"
+langchain-text-splitters = ">=0.0.1,<0.1"
 
 [tool.poetry.group.dev.dependencies]
 langchain-cli = ">=0.0.15"

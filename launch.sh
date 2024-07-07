@@ -2,6 +2,7 @@
 ##########################################
 # ENV VARIABLES 
 # USER EDIT BLOCK
+#export MODELPATH="/home/blurry/Desktop/ML/models/"  # Path to LLM
 export MODELPATH=""  # Path to LLM
 export PDFDIRPATH=""  # Path to directory storing PDFs
 export EMBEDMODELPATH="" # Path to embedding models
@@ -11,7 +12,7 @@ export EMBEDMODELPATH="" # Path to embedding models
 export TENSORPAR=1
 
 # Set path to the Langchain app
-export APPPATH="./"
+export APPPATH="./aragog-demo"
 
 # Set visible devices
 export CUDA_VISIBLE_DEVICES="0"
@@ -30,9 +31,10 @@ export TRANSFORMERS_OFFLINE=1
 export HF_HUB_OFFLINE=1
 
 # Create TMPDIR
-export TMPDIR=/state/partition1/user/$USER
-export RAY_TMPDIR=$TMPDIR/raytemp
-mkdir -p $RAY_TMPDIR
+# export TMPDIR=/state/partition1/user/$USER
+# export RAY_TMPDIR=$TMPDIR/raytemp
+export RAY_TMPDIR=$HOME/tmp/raytemp
+#mkdir -p $RAY_TMPDIR
 
 # Start head server
 echo "STARTING RAY HEAD SERVER"
@@ -49,15 +51,15 @@ sleep 20
 ray status
 
 # Setup forwarding for Langchain
-#export LC_PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
-export LC_PORT=8000
-export PORTAL_FWNAME="$(id -un | tr '[A-Z]' '[a-z]')-langchain"
-export PORTAL_FWFILE="/home/gridsan/portal-url-fw/${PORTAL_FWNAME}"
-echo $PORTAL_FWFILE
-echo "Portal URL is: https://${PORTAL_FWNAME}.fn.txe1-portal.mit.edu/playground/"
-echo "http://$MASTER_HOST:$LC_PORT" > $PORTAL_FWFILE
-cat $PORTAL_FWFILE
-chmod u+x ${PORTAL_FWFILE}
+export LC_PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+#export LC_PORT=8000
+# export PORTAL_FWNAME="$(id -un | tr '[A-Z]' '[a-z]')-langchain"
+# export PORTAL_FWFILE="/home/gridsan/portal-url-fw/${PORTAL_FWNAME}"
+# echo $PORTAL_FWFILE
+# echo "Portal URL is: https://${PORTAL_FWNAME}.fn.txe1-portal.mit.edu/playground/"
+# echo "http://$MASTER_HOST:$LC_PORT" > $PORTAL_FWFILE
+# cat $PORTAL_FWFILE
+# chmod u+x ${PORTAL_FWFILE}
 
 # Launch Langchain
 cd $APPPATH
