@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 aragog-demo/sample_datasets
+
+aragog-demo/launch.sh
